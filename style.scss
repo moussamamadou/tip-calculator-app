@@ -1,0 +1,255 @@
+/****** RESET CSS *******/
+
+*,
+*::before,
+*::after{box-sizing:border-box;}
+a{text-decoration:none; color:inherit; cursor:pointer;}
+button{background-color:transparent; color:inherit; border-width:0; padding:0; cursor:pointer;}
+figure{margin:0;}
+input::-moz-focus-inner {border:0; padding:0; margin:0;}
+ul, ol, dd{margin:0; padding:0; list-style:none;}
+h1, h2, h3, h4, h5, h6{margin:0; font-size:inherit; font-weight:inherit;}
+p{margin:0;}
+cite {font-style:normal;}
+fieldset{border-width:0; padding:0; margin:0;}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/****** VARIABLES CSS *******/
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+/*** Colors ***/
+/* Primary */
+$strong-cyan: hsl(172, 67%, 45%);
+
+/*** Neutral ***/
+$very-dark-cyan: hsl(183, 100%, 15%);
+$dark-grayish-cyan-1: hsl(183, 79%, 24%);
+$dark-grayish-cyan-2: hsl(173, 61%, 77%);
+$light-grayish-cyan-1: hsl(185, 41%, 84%);
+$light-grayish-cyan-2: hsl(203, 50%, 97%);
+$white: hsl(0, 0%, 100%);
+
+/*** Typography ***/
+/* Body Copy */
+$font-size: 24px;
+
+/* Font */
+$family: 'Space Mono', sans-serif;
+$weights: 400, 500, 700;
+
+
+/****** CUSTOM CSS *******/
+
+body{
+  background-color: $light-grayish-cyan-1;
+  font-family: $family;
+  font-weight: $weights;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+
+  input, button, label{
+    font-family: $family;
+    font-size: $font-size;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: border 0.2s ease-in, color 0.2s ease-in, background-color 0.2s ease-in;
+  }
+  input {
+    background-color: $light-grayish-cyan-2;
+    color: $very-dark-cyan;
+    padding: 10px 10px;
+    width: 100%;
+    border-radius: 10px;
+    border-width: 3px;
+    border : 3px solid $light-grayish-cyan-2;
+    &:focus{
+      border : 3px solid $strong-cyan;
+    }
+    &:required{
+      border : 3px solid crimson;
+    }
+  }
+  button{
+    background-color: $strong-cyan;
+    color: $very-dark-cyan;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 5px;
+    border-width: 0;
+    &:hover{
+      background-color: $light-grayish-cyan-1;
+    }
+    &:disabled{
+      background-color: $dark-grayish-cyan-1;
+    }
+  }
+  header{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 80px;
+  }
+  main{
+    display: flex;
+    padding: 20px 0;
+    margin: 0 20px;
+    width: 70%;
+    max-width: 1200px;
+    min-width: 900px;
+    .calculator{
+      background-color: $white;
+      display: flex;
+      justify-content: space-between;
+      padding: 50px;
+      width: 100%;
+      border-radius: 25px;
+      .operation{
+        flex-basis: 47.5%;
+        .operation-label{
+          display: inline-block;
+          font-size: 18px;
+          margin: 0 0 15px 0;
+        }
+        .bill, .tip, .number-people{
+          margin: 30px 0;
+        }
+        .bill, .number-people {
+          input{
+            width: 100%;
+            text-align: right;
+          }
+        }
+        .tip {
+          input{
+            text-align: center;
+          }
+        }
+        .bill{
+          position: relative;
+          span:before{
+            content: url("images/icon-dollar.svg");
+            position: absolute;
+            left: 15px;
+            top: 60px;
+          }
+        }
+        .number-people{
+          position: relative;
+          span:before{
+            content: url("images/icon-person.svg");
+            position: absolute;
+            left: 15px;
+            top: 60px;
+          }
+        }
+        .tip{
+          .tip-percentages{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            .tip-percentage{
+              width: 100%;
+              input{
+
+              }
+              input[type="radio"]{
+                opacity: 0;
+                position: fixed;
+                width: 0;
+                & + label  {
+                  display: inline-block;
+                  color: $light-grayish-cyan-2;
+                  background-color: $very-dark-cyan;
+                  width: 100%;
+                  height: 100%;
+                  text-align: center;
+                  padding: 10px 0;
+                  border-radius: 10px;
+                }
+                & + label:hover{
+                  color: $very-dark-cyan;
+                  background-color: $dark-grayish-cyan-2;
+                }
+                &:checked + label  {
+                  color: $very-dark-cyan;
+                  background-color: $strong-cyan;
+                }
+              }
+            }
+          }
+        }
+      }
+      .result{
+        background-color: $very-dark-cyan;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-basis: 47.5%;
+        border-radius: 25px;
+        padding: 40px 40px;
+        color: #fff;
+        height: 100%;
+        
+        .tip-amount, .total{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 20px 0;
+        }
+        .reset{
+          justify-self: flex-end;
+        }
+
+        .result-label{
+          font-size: 18px;
+          font-weight: 700;
+          span{
+            font-size: 14px;
+            color: $strong-cyan;
+          }
+        }
+        .result-number{
+          font-size: 50px;
+          font-weight: 700;
+          color: $strong-cyan;
+        }
+      }
+    }
+  }
+
+  @media (max-width : 980px) {
+    main{
+      width: 90%;
+      min-width: 300px;
+      .calculator{
+        flex-direction: column;
+        .operation, .result{
+          flex-basis: 100%;
+        }
+      }
+    }
+  }
+  footer{
+    justify-self: flex-end;
+
+  }
+}
+
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
