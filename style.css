@@ -192,17 +192,20 @@ body {
         border-radius: 25px;
         padding: 40px 40px;
         color: #fff;
-        height: 100%; }
+        height: 100%;
+        overflow: hidden; }
         body main .calculator .result .tip-amount, body main .calculator .result .total {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin: 20px 0; }
+          margin: 20px 0;
+          overflow: hidden; }
         body main .calculator .result .reset {
           justify-self: flex-end; }
         body main .calculator .result .result-label {
           font-size: 18px;
-          font-weight: 700; }
+          font-weight: 700;
+          min-width: 120px; }
           body main .calculator .result .result-label span {
             font-size: 14px;
             color: #26c0ab; }

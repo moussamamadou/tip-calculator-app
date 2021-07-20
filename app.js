@@ -134,7 +134,7 @@ class FormValidation {
           UI.showError('Should not be negative', className)
           updateValue = false;
         }else if (ValueIntegrity.numberIsDecimal(numberInput[i].value) && i ===2){
-          UI.showError('Should be a full people', className)
+          UI.showError('Should be a full person', className)
           updateValue = false;
         }
       }

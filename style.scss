@@ -215,12 +215,14 @@ body{
         padding: 40px 40px;
         color: #fff;
         height: 100%;
+        overflow: hidden;
         
         .tip-amount, .total{
           display: flex;
           justify-content: space-between;
           align-items: center;
           margin: 20px 0;
+          overflow: hidden;
         }
         .reset{
           justify-self: flex-end;
@@ -229,6 +231,7 @@ body{
         .result-label{
           font-size: 18px;
           font-weight: 700;
+          min-width: 120px;
           span{
             font-size: 14px;
             color: $strong-cyan;
