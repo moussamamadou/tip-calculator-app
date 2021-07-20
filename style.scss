@@ -59,6 +59,7 @@ body{
   justify-content: center;
   align-items: center;
   height: 90vh;
+  margin: 0;
 
   input, button, label{
     font-family: $family;
@@ -80,7 +81,7 @@ body{
       border : 3px solid $strong-cyan;
     }
     &:required{
-      border : 3px solid crimson;
+      border : 3px solid coral;
     }
   }
   button{
@@ -121,7 +122,6 @@ body{
         .operation-label{
           display: inline-block;
           font-size: 18px;
-          margin: 0 0 15px 0;
         }
         .bill, .tip, .number-people{
           margin: 30px 0;
@@ -139,21 +139,32 @@ body{
         }
         .bill{
           position: relative;
-          span:before{
+          span.input-wrapper:before{
             content: url("images/icon-dollar.svg");
             position: absolute;
             left: 15px;
-            top: 60px;
+            top: 43px;
           }
+        }
+        .label-wrapper{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 0 0 10px 0;
+        }
+        span.error{
+          color: crimson;
+          font-size: 14px;
+          font-weight: 700;
+        }
+        span.input-wrapper:before{
+          content: url("images/icon-person.svg");
+          position: absolute;
+          left: 15px;
+          top: 43px;
         }
         .number-people{
           position: relative;
-          span:before{
-            content: url("images/icon-person.svg");
-            position: absolute;
-            left: 15px;
-            top: 60px;
-          }
         }
         .tip{
           .tip-percentages{
@@ -233,6 +244,9 @@ body{
   }
 
   @media (max-width : 980px) {
+    header{
+      padding: 60px 0 20px 0;
+    }
     main{
       width: 90%;
       min-width: 300px;
@@ -240,6 +254,33 @@ body{
         flex-direction: column;
         .operation, .result{
           flex-basis: 100%;
+        }
+      }
+    }
+  }
+  @media (max-width : 540px) {
+    main{
+      width: 100%;
+      margin: 0;
+      .calculator{
+        padding: 25px;
+        .operation, .result{
+          flex-basis: 100%;
+        }
+        .operation{
+          .tip{
+            .tip-percentages{
+              grid-template-columns: repeat(2, 1fr);
+              grid-template-rows: repeat(3, 1fr);
+
+            }
+          }
+        }
+        .result{
+          padding: 30px;
+          .result-number{
+            font-size: 40px;
+          }
         }
       }
     }
