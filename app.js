@@ -1,6 +1,9 @@
 let form = document.querySelector('#operation');
 let button = document.querySelector('#reset-btn');
 
+/** Add Event listener **/
+
+/** Listen to keypress and Check the form if form is field  **/
 form.addEventListener('keyup', function (e){
   e.preventDefault();
   if(FormValidation.formIsField()){
@@ -8,19 +11,8 @@ form.addEventListener('keyup', function (e){
   }
 });
 
-form.addEventListener('click', function (e){
 
-  if(e.target.name === 'tip-selection'){
-    UI.resetInputText('tip-custom');
-  } else if (e.target.name === 'tip-custom'){
-    UI.resetInputRadio();
-  } 
-
-  if(FormValidation.formIsField()){
-    FormValidation.checkForm();
-  }
-});
-
+/** Listen to "Enter" keypress and Check the form if form is field  **/
 document.addEventListener('keyup', function (e){
   e.preventDefault();
   if (e.keyCode === 13) {
@@ -30,11 +22,25 @@ document.addEventListener('keyup', function (e){
   }
 });
 
+/** Listen to click on the form and Check the form if form is field  **/
+form.addEventListener('click', function (e){
+  if(e.target.name === 'tip-selection'){
+    UI.resetInputText('tip-custom');
+  } else if (e.target.name === 'tip-custom'){
+    UI.resetInputRadio();
+  } 
+  if(FormValidation.formIsField()){
+    FormValidation.checkForm();
+  }
+});
+
+/** Listen to click on the rest button and Reset the UI  **/
 button.addEventListener('click', function (e){
   UI.desactivedButton();
   UI.resetUI();
 });
 
+/**  Handle all the UI update **/
 class UI {
 
   static updateTip(tip){
@@ -89,6 +95,8 @@ class UI {
   }
 }
 
+
+/**  Handle all calculation logic **/
 class Calculator {
   static calculateTip(bill, tip, numberPeople){
     return ((Number(bill)*(Number(tip)/100))/Number(numberPeople)).toFixed(2);
@@ -99,6 +107,7 @@ class Calculator {
   }
 }
 
+/**  Handle all the form logic **/
 class FormValidation {
 
   static checkForm(){
@@ -187,6 +196,7 @@ class FormValidation {
   }
 }
 
+/**  Handle all verification of the values **/
 class ValueIntegrity {
   
   static valueIsNumber(inputValue){
