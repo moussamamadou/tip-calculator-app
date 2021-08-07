@@ -18,7 +18,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://moussamamadou.github.io/tip-calculator-app/)
+- [Solution URL](https://moussamamadou.github.io/tip-calculator-app/)
 
 ## My process
 
